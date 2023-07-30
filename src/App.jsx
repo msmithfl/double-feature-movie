@@ -4,7 +4,7 @@ import "./App.css";
 function App() {
   return (
     <>
-      <h1 className="text-3xl font-bold text-center mt-5">
+      <h1 className="text-3xl text-white font-bold text-center p-5">
         Tonight's Double Feature
       </h1>
     </>
