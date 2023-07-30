@@ -6,6 +6,7 @@ const Layout = () => {
   const [movies, setMovies] = useState([]);
   const [posterPaths, setPosterPaths] = useState([]);
   const [releaseYear, setReleaseYear] = useState("");
+  const [selectedGenre, setSelectedGenre] = useState("");
 
   useEffect(() => {
     // Initialize all poster paths with the placeholder
@@ -21,11 +22,16 @@ const Layout = () => {
       const apiKey = "f86fa1737074f367790775cd55406a1c";
       const apiUrl = "https://api.themoviedb.org/3/discover/movie";
 
+      const randomPage = Math.floor(Math.random() * 2) + 1;
+      console.log(randomPage);
+
       const params = {
         api_key: apiKey,
         primary_release_year: releaseYear,
         with_original_language: "en",
         "vote_count.gte": 50,
+        page: randomPage,
+        with_genres: selectedGenre,
       };
 
       const response = await axios.get(apiUrl, { params });
@@ -50,6 +56,10 @@ const Layout = () => {
     setReleaseYear(event.target.value);
   };
 
+  const handleGenreChange = (event) => {
+    setSelectedGenre(event.target.value);
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-5">
       <div>
@@ -63,6 +73,22 @@ const Layout = () => {
           onChange={handleReleaseYearChange}
           className="m-2 p-2 rounded-lg border border-gray-300"
         />
+      </div>
+      <div>
+        <label htmlFor="genre" className="text-white">
+          Select Genre:
+        </label>
+        <select
+          id="genre"
+          value={selectedGenre}
+          onChange={handleGenreChange}
+          className="m-2 p-2 rounded-lg border border-gray-300"
+        >
+          <option value="">All Genres</option>
+          <option value="28">Action</option>
+          <option value="35">Comedy</option>
+          <option value="16">Animation</option>
+        </select>
       </div>
       <h1 className="text-3xl text-white font-bold">
         Tonight's Double Feature is...
