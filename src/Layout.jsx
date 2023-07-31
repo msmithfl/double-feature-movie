@@ -42,6 +42,7 @@ const Layout = () => {
         .slice(0, 2);
       setMovies(randomizedMovies);
 
+      console.log(randomizedMovies);
       // Extract the poster paths and store them separately
       const fetchedPosterPaths = randomizedMovies.map(
         (movie) => `https://image.tmdb.org/t/p/w185${movie.poster_path}`
@@ -86,8 +87,12 @@ const Layout = () => {
         >
           <option value="">All Genres</option>
           <option value="28">Action</option>
+          <option value="12">Adventure</option>
           <option value="35">Comedy</option>
-          <option value="16">Animation</option>
+          <option value="10751">Family</option>
+          <option value="27">Horror</option>
+          <option value="878">Sci-Fi</option>
+          <option value="53">Thriller</option>
         </select>
       </div>
       <h1 className="text-3xl text-white font-bold">
