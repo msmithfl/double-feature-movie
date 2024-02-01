@@ -1,12 +1,21 @@
-import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import Popular from "./pages/Popular";
+import Footer from "./components/Footer";
 import "./App.css";
 
 function App() {
   return (
     <>
-      <h1 className="text-3xl text-white font-bold text-center p-5">
-        Tonight's Double Feature
-      </h1>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/popular" element={<Popular />} />
+        </Routes>
+        <Footer />
+      </Router>
     </>
   );
 }
